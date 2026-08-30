@@ -22,6 +22,7 @@
   </tbody>
 </table>
 
+<?php if ($election->status === 'OPEN'): ?>
 <form method="post" action="index.php" class="card p-3" style="max-width:480px">
   <input type="hidden" name="action" value="vote">
 
@@ -49,5 +50,10 @@
 
   <button type="submit" class="btn btn-primary">ลงคะแนน</button>
 </form>
+<?php else: ?>
+  <div class="alert alert-secondary" style="max-width:480px">
+    ปิดรับคะแนนแล้ว ลงคะแนนเพิ่มไม่ได้ — ดูผลได้ที่หน้า <a href="index.php?page=status">สถานะ/ผล</a>
+  </div>
+<?php endif; ?>
 
 <?php include __DIR__ . '/layout_footer.php'; ?>

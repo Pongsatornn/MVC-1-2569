@@ -10,10 +10,6 @@ class AdminController {
         $this->election->close();
     }
 
-    function reopen() {
-        return $this->election->reopen();
-    }
-
     function decideGroup($groupId, $result) {
         $this->election->decideGroup($groupId, $result);
     }

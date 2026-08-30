@@ -25,17 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    if ($action === 'reopen') {
-        $error = $adminController->reopen();
-        $_SESSION['election'] = $election;
-        if ($error) {
-            header('Location: index.php?page=admin&error=' . urlencode($error));
-        } else {
-            header('Location: index.php?page=admin');
-        }
-        exit;
-    }
-
     if ($action === 'decide') {
         $adminController->decideGroup($_POST['group_id'], $_POST['result']);
         $_SESSION['election'] = $election;

@@ -100,20 +100,6 @@ class Election {
         }
     }
 
-    function reopen() {
-        if ($this->status === 'OPEN') {
-            return 'การเลือกตั้งเปิดรับคะแนนอยู่แล้ว';
-        }
-        $this->status = 'OPEN';
-        $this->groups = [];
-        $this->lastGroupNo = 0;
-        foreach ($this->ballots as $b) {
-            $b->status = 'บันทึกแล้ว';
-            $b->groupId = null;
-        }
-        return null;
-    }
-
     function finish() {
         $this->status = 'สรุปผลแล้ว';
     }

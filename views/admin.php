@@ -5,22 +5,10 @@
 
 <h3>หน้าเจ้าหน้าที่เลือกตั้ง</h3>
 
-<?php if (isset($_GET['error'])): ?>
-  <div class="alert alert-warning"><?= htmlspecialchars($_GET['error']) ?></div>
-<?php endif; ?>
-
 <?php if ($election->status === 'OPEN'): ?>
   <form method="post" action="index.php" class="mb-4">
     <input type="hidden" name="action" value="close">
     <button type="submit" class="btn btn-danger">ปิดรับคะแนน</button>
-  </form>
-<?php endif; ?>
-
-<?php if ($election->status !== 'OPEN'): ?>
-  <form method="post" action="index.php" class="mb-4">
-    <input type="hidden" name="action" value="reopen">
-    <button type="submit" class="btn btn-warning">เปิดรับคะแนนอีกครั้ง</button>
-    <span class="text-muted ms-2">กลุ่มบัตรซ้ำที่ตรวจไว้จะถูกล้างทั้งหมด</span>
   </form>
 <?php endif; ?>
 
