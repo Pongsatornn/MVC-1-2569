@@ -7,15 +7,14 @@
   - แบบไม่ต้องลง XAMPP: `php -S localhost:8000` ที่โฟลเดอร์โปรเจกต์ แล้วเปิด `http://localhost:8000/index.php`
 - **หมายเหตุที่จำเป็น:**
   - ถ้าต้องการเริ่มข้อมูลใหม่ เปิด `index.php?reset=1`
-  - Bootstrap โหลดจาก CDN จึงต้องต่ออินเทอร์เน็ตตอนเปิดหน้าเว็บ
 
 ## 2. ตารางเชื่อมโยง Requirements
 
 | Requirement | Model / Domain | Controller / Action | View / Screen |
 |---|---|---|---|
 | R1 ดูรายชื่อผู้สมัคร | Candidate,Election.getCandidates() | VotingController.getCandidates()` | views/voting.php  |
-| R2 ลงคะแนนแบบจัดอันดับ 3 อันดับ | `Ballot`, `Voter`, `Election::vote()` | `VotingController::vote() action=vote | views/voting.php|
-| R3 ปิดรับคะแนนและจับกลุ่มบัตรรูปแบบซ้ำ | PatternGroup, Election.close() | AdminController.close() — action=close |views/admin.php |
+| R2 ลงคะแนนแบบจัดอันดับ 3 อันดับ | Ballot, Voter, Election.vote() | VotingController.vote() action=vote | views/voting.php|
+| R3 ปิดรับคะแนนและจับกลุ่มบัตรรูปแบบซ้ำ | PatternGroup, Election.close() | AdminController.close()  action=close |views/admin.php |
 | R4 ตรวจกลุ่มบัตรซ้ำและสรุปผล | PatternGroup.decide(), Election::decideGroup(), Election.hasPendingGroup(), Election.finish() | `AdminController.decideGroup() action=decide,AdminController.finish()  action=finish | views/admin.php |
 | R5 สรุปสถานะและผลการเลือกตั้ง | Election.getSummary(), Election.countScore() | `index.php เรียก Model โดยตรง | views/status.php |
 
@@ -27,11 +26,11 @@
 | กรณี | ผ่าน/ไม่ผ่าน | หมายเหตุ (เฉพาะที่จำเป็น) |
 |---|---|---|
 | T1 เปิดหน้า "ลงคะแนน" ดูรายชื่อผู้สมัคร | ผ่าน |  |
-| T2 เลือก V04 กับอันดับ C01>C02>C03 แล้วกด[ลงคะแนน] | ผ่าน |  |
-| T3 เลือก V04 คนเดิมแล้วกด [ลงคะแนน] อีกครั้ง | ผ่าน |  |
-| T4 เลือก C01 ซ้ำสองอันดับแล้วกด [ลงคะแนน] | ผ่าน | 
-| T5 กด [ปิดรับคะแนน] ในหน้าเจ้าหน้าที่ | ผ่าน | |
-| T6 กด [สรุปผล] ขณะกลุ่มยังรอตรวจสอบ | ผ่าน |  |
+| T2 เลือก V04 กับอันดับ C01>C02>C03 แล้วกด | ผ่าน |  |
+| T3 เลือก V04 คนเดิมแล้วกดอีกครั้ง | ผ่าน |  |
+| T4 เลือก C01 ซ้ำสองอันดับแล้วกด | ผ่าน | 
+| T5 กดในหน้าเจ้าหน้าที่ | ผ่าน | |
+| T6 กดขณะกลุ่มยังรอตรวจสอบ | ผ่าน |  |
 
 ## 4. ความแตกต่างระหว่างแบบที่ออกกับโปรแกรมจริง
 
