@@ -1,5 +1,4 @@
 <?php
-// Model: ผู้มีสิทธิ์เลือกตั้ง
 class Voter {
     public $id;
     public $name;
